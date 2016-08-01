@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ColorWarsMultiplayerActors
+namespace Tests
 {
     public class Class1
     {

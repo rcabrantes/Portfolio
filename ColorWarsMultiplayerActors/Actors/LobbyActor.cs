@@ -17,7 +17,10 @@ namespace ColorWarsMultiplayerActors.Actors
         {
             ClientList = new Dictionary<string, ClientData>();
             Receive<ConnectMessage>(m=> {
-                ClientList.Add(m.ConnectionID, new ClientData(m.ConnectionID,m.UserName,null));
+
+                var userActor = Context.ActorOf<UserActor>();
+
+                ClientList.Add(m.ConnectionID, new ClientData(m.ConnectionID,m.UserName,userActor));
             });
         }
     }

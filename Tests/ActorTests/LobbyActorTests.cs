@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ColorWarsMultiplayerActors.Actors;
+using ColorWarsMultiplayerActors.Models;
 
 namespace Tests.ActorTests
 {
@@ -39,6 +40,17 @@ namespace Tests.ActorTests
             var result=_testActor.UnderlyingActor.ClientList[CONNECTION_ID];
 
             Assert.AreEqual(USER_NAME, result.UserName);
+        }
+
+        [Test]
+        public void WhenNewUserConnects_CreatesUserActor()
+        {
+            _testActor.Tell(new LobbyActor.ConnectMessage(CONNECTION_ID, USER_NAME));
+
+            var result = _testActor.UnderlyingActor.ClientList[CONNECTION_ID].UserActor;
+
+            Assert.IsNotNull(result);
+
         }
 
     }

@@ -54,9 +54,11 @@
   <ItemGroup>
     <Compile Include="Actors\LobbyActor.cs" />
     <Compile Include="Actors\LobbyActor.Messages.cs" />
+    <Compile Include="Actors\UserActor.cs" />
     <Compile Include="Facade\IProxyClient.cs" />
     <Compile Include="Facade\Proxy.cs" />
     <Compile Include="Models\ClientData.cs" />
+    <Compile Include="Models\PingMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

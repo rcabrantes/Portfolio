@@ -30,7 +30,7 @@
         <br />
         <span>Player 2: </span><span id="score2"></span>
     </div>
-    <canvas id="test" height="480" width="800" style="background-color:black"></canvas>
+    <div id="test" height="480" width="800" style="background-color:black"></div>
     <input type="submit" value="Draw" onclick="drawClick()" />
     
     <div class="controls-container" data-player="2">
@@ -86,7 +86,7 @@
 
         function drawGrid()
         {
-            grid.drawCanvas(document.getElementById('test'));
+            grid.drawDivs($('#test'));
 
         }
     </script>

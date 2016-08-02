@@ -5,56 +5,52 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>TestHubLogin</title>
+    <meta charset="utf-8" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/signalr")
+
+    @Scripts.Render("~/bundles/colorwars")
+
+    <link async href="http://fonts.googleapis.com/css?family=Fredoka%20One" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+    <title>Colors Wars</title>
 
 
 </head>
-<body>
-    <div> 
-        <div class="container">
-            <input type="text" id="message" />
-            <input type="button" id="sendmessage" value="Send" />
-            <input type="hidden" id="displayname" />
-            <ul id="discussion"></ul>
-        </div>
 
-    </div>
-    <script src="~/signalr/hubs"></script>
-    <script type="text/javascript">
-        $(function () {
-            // Declare a proxy to reference the hub.
-            var chat = $.connection.colorWarsHub;
-            // Create a function that the hub can call to broadcast messages.
-            chat.client.broadcastMessage = function (name, message) {
-                // Html encode display name and message.
-                var encodedName = $('<div />').text(name).html();
-                var encodedMsg = $('<div />').text(message).html();
-                // Add the message to the page.
-                $('#discussion').append('<li><strong>' + encodedName
-                    + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
-            };
-            // Get the user name and store it to prepend to messages.
-            $('#displayname').val(prompt('Enter your name:', ''));
-            // Set initial focus to message input box.
-            $('#message').focus();
-            // Start the connection.
-            $.connection.hub.start().done(function () {
-                $('#sendmessage').click(function () {
-                    // Call the Send method on the hub.
-                    chat.server.send($('#displayname').val(), $('#message').val());
-                    // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();
-                });
-            });
-        });
-    </script>
+
+
+<body>
+
+    <header>
+        <div><h1>Color Wars</h1></div>
+        <div><a class="Button1" id="OnlineOpponentStart">Find online opponent</a></div>
+    </header>
+    <div id="container"></div>
+
 </body>
+
+
 </html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#OnlineOpponentStart').click(function () {
+            $.ajax({
+                url:'@Url.Action("LobbyPartialView")',
+                contentType:'application/html;charset=utf-8',
+                type:'GET',
+                dataType:'html'
+            }).done(function(result){
+                $('#container').html(result);
+            });
+        })
+    });
+
+</script>

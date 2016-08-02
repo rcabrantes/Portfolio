@@ -18,5 +18,10 @@ namespace Portfolio.Controllers
         {
             return View();
         }
+
+        public PartialViewResult LobbyPartialView()
+        {
+            return PartialView("LobbyPartial");
+        }
     }
 }

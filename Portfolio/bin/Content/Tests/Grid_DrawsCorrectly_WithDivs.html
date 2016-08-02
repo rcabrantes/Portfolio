@@ -7,15 +7,17 @@
     <script src="../Core/utilities.js"></script>
     <script src="../Core/gameCell.js"></script>
     <script src="../Core/gameGrid.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="HotSeat.css">
+ 
 
     <title></title>
 </head>
 <body>
     <div>
-        <p>This simply tests that the game grid is able to draw itself on a canvas.</p>
+        <p>This simply tests that the game grid is able to draw itself with divs.</p>
     </div>
-    <canvas id="test" height="480" width="800" style="background-color:black"></canvas>
+    <br />
+    <div id="test" style="background-color:black"></div>
     <input type="submit" value="Draw" onclick="drawClick()" />
 
     <script type="text/javascript">
@@ -28,7 +30,7 @@
             var grid = new gameGrid;
 
             grid.initializeGrid(72, 36);
-            grid.drawCanvas(document.getElementById('test'));
+            grid.drawDivs($('#test'));
         }
     </script>
 </body>

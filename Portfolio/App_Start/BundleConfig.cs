@@ -8,6 +8,14 @@ namespace Portfolio
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.IgnoreList.Clear();
+
+            bundles.Add(new ScriptBundle("~/bundles/colorwars").Include(
+                    "~/Content/Core/utilities.js",
+                    "~/Content/Core/gameCell.js",
+                    "~/Content/Core/gameGrid.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -24,11 +32,13 @@ namespace Portfolio
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/HotSeat2.css",
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
                     "~/Scripts/jquery.signalR-2.2.1.js"
                 ));
+            
         }
     }
 }

@@ -132,6 +132,11 @@ class gameGrid {
             {
                 this.checkNeighbors(cell);
             }
+
+            if(this.usingDivs)
+            {
+                cell.associatedDiv.className = 'cell content hexagon hexagon-' + cell.colorString();
+            }
         }
 
         this.draw();
@@ -208,10 +213,6 @@ class gameGrid {
         {
             this.drawCanvas();
         }
-        if(this.usginDivs)
-        {
-            this.drawDivs();
-        }
     }
 
     drawDivs(e) {
@@ -234,13 +235,7 @@ class gameGrid {
 
 
         for (var y = 0; y < this.grid.length; y++) {
-            //var row = document.createElement('div');
-            //row.className += 'row';
-
-            //row = $(row);
-            //row.height(this.divHeight);
             
-            //this.divsContainer.append(row);
             for (var x = 0; x < this.grid[y].length; x++) {
 
                 var div = document.createElement('div');
@@ -265,16 +260,17 @@ class gameGrid {
                 div.style.width = this.divWidth  + 'px';
                 div.style.height = this.divHeight + 'px';
                 cell.className = 'cell content hexagon hexagon-' + this.grid[y][x].colorString();
+                this.grid[y][x].associatedDiv = cell;
                 this.divsContainer.append(div);
                 $(div).append(cell);
 
-                //var maskLeft = document.createElement('div');
-                //maskLeft.className = "cell-mask-left";
-                //var maskRight = document.createElement('div');
-                //maskRight.className = "cell-mask-right";
+                var maskLeft = document.createElement('div');
+                maskLeft.className = "cell-mask-left";
+                var maskRight = document.createElement('div');
+                maskRight.className = "cell-mask-right";
 
-                //$(cell).append(maskLeft);
-                //$(cell).append(maskRight);
+                $(cell).append(maskLeft);
+                $(cell).append(maskRight);
 
             }
         }

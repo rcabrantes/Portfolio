@@ -42,7 +42,12 @@
 .hexagon-pink:before{background-color:pink}
 .hexagon-brown:before{background-color:brown}
 
-.content:after { content: attr(data-content); color:black; }
+.content:after {
+     content: attr(data-content);
+     color:black; 
+     font-size:60%;
+	 text-align:center;
+}
 
 
 

@@ -71,6 +71,9 @@
     <Content Include="Tests\HotSeat.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Tests\HotSeatGame_Works_With_Divs.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tests\HotSeatGame_Works.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

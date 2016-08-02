@@ -114,3 +114,4 @@ C:\Users\Renato\OneDrive\SPI\Portfolio\Portfolio\bin\Microsoft.AspNet.SignalR.Co
 C:\Users\Renato\OneDrive\SPI\Portfolio\Portfolio\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 C:\Users\Renato\OneDrive\SPI\Portfolio\Portfolio\bin\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\Renato\OneDrive\SPI\Portfolio\Portfolio\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\Renato\OneDrive\SPI\Portfolio\Portfolio\bin\Tests\HotSeatGame_Works_With_Divs.html

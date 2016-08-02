@@ -118,7 +118,14 @@ class gameGrid {
 
     updateDivDisplay(cell) {
         cell.associatedDiv.className = 'cell content hexagon hexagon-' + cell.colorString();
-        cell.associatedDiv.setAttribute('data-content', cell.owner);
+        var ownerText;
+        if (cell.owner < 1) {
+            ownerText = "";
+        }
+        else {
+            ownerText = cell.owner;
+        }
+        cell.associatedDiv.setAttribute('data-content', ownerText);
     }
 
 
@@ -268,8 +275,10 @@ class gameGrid {
                 div.style.top = top + 'px';
                 div.style.width = this.divWidth  + 'px';
                 div.style.height = this.divHeight + 'px';
-                cell.className = 'cell content hexagon hexagon-' + this.grid[y][x].colorString();
+                //cell.className = 'cell content hexagon hexagon-' + this.grid[y][x].colorString();
+                
                 this.grid[y][x].associatedDiv = cell;
+                this.updateDivDisplay(this.grid[y][x]);
                 this.divsContainer.append(div);
                 $(div).append(cell);
 

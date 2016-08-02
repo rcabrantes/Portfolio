@@ -116,6 +116,12 @@ class gameGrid {
             }
     }
 
+    updateDivDisplay(cell) {
+        cell.associatedDiv.className = 'cell content hexagon hexagon-' + cell.colorString();
+        cell.associatedDiv.setAttribute('data-content', cell.owner);
+    }
+
+
     play(player,newColor)
     {
         if (this.currentPlayer != player)
@@ -135,7 +141,7 @@ class gameGrid {
 
             if(this.usingDivs)
             {
-                cell.associatedDiv.className = 'cell content hexagon hexagon-' + cell.colorString();
+                this.updateDivDisplay(cell);
             }
         }
 
@@ -156,6 +162,9 @@ class gameGrid {
     {
         this.grid[y][x].owner = player;
         this.playerCells[player].push(this.grid[y][x]);
+        if (this.usingDivs) {
+            this.updateDivDisplay(this.grid[y][x]);
+        }
         if (!this.grid[y][x].surrounded) {
             this.checkNeighbors(this.grid[y][x]);
         }

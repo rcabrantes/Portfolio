@@ -4,12 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio", "Portfolio\Portfolio.csproj", "{460F2F93-9994-4526-BFB7-F802B4067E2F}"
-<<<<<<< HEAD
-	ProjectSection(ProjectDependencies) = postProject
-		{A4747D37-6570-4865-9A32-927CDB6A804A} = {A4747D37-6570-4865-9A32-927CDB6A804A}
-	EndProjectSection
-=======
->>>>>>> POC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorWarsMultiplayerActors", "ColorWarsMultiplayerActors\ColorWarsMultiplayerActors.csproj", "{A4747D37-6570-4865-9A32-927CDB6A804A}"
 EndProject

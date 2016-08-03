@@ -268,7 +268,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-<<<<<<< HEAD
     <Content Include="Content\Core\gameCell.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -278,29 +277,7 @@
     <Content Include="Content\Core\utilities.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\HotSeat.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\HotSeat2.css" />
-    <Content Include="Content\Tests\GameGrid_DrawsCorrectly.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Tests\GameGrid_WhenCreated_HasData.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Tests\GameGrid_WhenPlayerChangesColor_CapturesCells.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Tests\Grid_DrawsCorrectly_WithDivs.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Tests\HotSeatGame_Works.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Tests\HotSeatGame_Works_With_Divs.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-=======
     <Content Include="Content\Core\gameCell.js" />
     <Content Include="Content\Core\gameGrid.js" />
     <Content Include="Content\Core\utilities.js" />
@@ -312,7 +289,6 @@
     <Content Include="Content\Tests\Grid_DrawsCorrectly_WithDivs.html" />
     <Content Include="Content\Tests\HotSeatGame_Works.html" />
     <Content Include="Content\Tests\HotSeatGame_Works_With_Divs.html" />
->>>>>>> POC
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -388,7 +364,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Libraries\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

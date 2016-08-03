@@ -8,5 +8,7 @@ namespace ColorWarsMultiplayerActors.Facade
 {
     public interface IProxyClient
     {
+
+        void SystemStatusLog(string connectionID, string message);
     }
 }

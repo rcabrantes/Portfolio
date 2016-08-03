@@ -14,7 +14,14 @@ namespace ColorWarsMultiplayerActors.Facade
         private static ActorSystem _system;
 
         private static IActorRef _lobbyActor;
+        private static IActorRef _proxyActor;
 
+
+
+        public static void ServerStatusLog(string connectionID, string message)
+        {
+            _client.SystemStatusLog(connectionID, message);
+        }
 
         public static void ConnectClient(string connectionID,string userName)
         {
@@ -36,8 +43,12 @@ namespace ColorWarsMultiplayerActors.Facade
 
         private static void CreateSystem()
         {
+            
+
             _system = ActorSystem.Create("ColorWarsSystem");
-            _lobbyActor = _system.ActorOf<LobbyActor>("Lobby");
+
+            _proxyActor = _system.ActorOf<ProxyActor>("ProxyActor");
+            _lobbyActor = _system.ActorOf(Props.Create(()=>new LobbyActor(_proxyActor)));
 
 
         }

@@ -8,11 +8,15 @@ namespace Portfolio
 {
     public class ColorWarsHub : Hub
     {
-        public void Send(string name, string message)
+
+        public void ask()
         {
-            // Call the broadcastMessage method to update clients.
-            Clients.All.broadcastMessage(name, message);
-            
+
+        }
+
+        public void connect(string username)
+        {
+            Actors.Proxy.Connect(username,Context.ConnectionId);
         }
     }
 }

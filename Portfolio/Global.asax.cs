@@ -11,8 +11,10 @@ namespace Portfolio
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+
         protected void Application_Start()
         {
+            Actors.Init();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -1,12 +1,25 @@
 ﻿<div class="lobby-container">
     <span>Please choose a user name:</span>
-    <input type="text" id="user-name-input"/>
+    <input type="text" id="user-name-input" value="rsinohara"/>
     <button onclick="FindOpponentClick()">Find opponent</button>
 
+    <div id="server-status-container"></div>
 
 </div>
+@Scripts.Render("~/bundles/signalr")
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/lobby.js"></script>
 <script type="text/javascript">
+
+    
+    lobby.serverStatusContainer = $('#server-status-container');
+    lobby.init();
+
     function FindOpponentClick() {
-        alert('a');
+        //Wait until lobby it initialized
+        while (!lobby.initialized);
+        
+        lobby.connect($('#user-name-input').val());
+
     }
 </script>

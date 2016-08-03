@@ -12,15 +12,22 @@ namespace ColorWarsMultiplayerActors.Actors
     {
         public Dictionary<string,ClientData> ClientList;
 
+        public IActorRef ProxyActor;
 
-        public LobbyActor()
+
+        public LobbyActor(IActorRef proxyActor)
         {
+            ProxyActor = proxyActor;
             ClientList = new Dictionary<string, ClientData>();
             Receive<ConnectMessage>(m=> {
 
                 var userActor = Context.ActorOf<UserActor>();
 
-                ClientList.Add(m.ConnectionID, new ClientData(m.ConnectionID,m.UserName,userActor));
+                var clientData = new ClientData(m.ConnectionID, m.UserName, userActor);
+                ClientList.Add(m.ConnectionID, clientData );
+
+                ProxyActor.Tell(new ProxyActor.LobbyActorStatus("Connected to lobby.", clientData));
+
             });
         }
     }

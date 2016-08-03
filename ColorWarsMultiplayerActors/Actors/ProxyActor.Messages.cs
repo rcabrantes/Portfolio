@@ -23,5 +23,18 @@ namespace ColorWarsMultiplayerActors.Actors
 
 
         }
+
+        public class LobbyActorUserAlreadyConnected
+        {
+
+            public ClientData ClientData { get; private set; }
+
+            public LobbyActorUserAlreadyConnected( ClientData clientData)
+            {
+                ClientData = clientData;
+            }
+
+
+        }
     }
 }

@@ -12,18 +12,20 @@ namespace ColorWarsMultiplayerActors.Actors
     {
         public Dictionary<string,ClientData> ClientList;
 
-        public IActorRef ProxyActor;
+        public IActorRef mProxyActor;
+        public IActorRef mQueueActor;
 
 
-        public LobbyActor(IActorRef proxyActor)
+        public LobbyActor(IActorRef proxyActor,IActorRef queueActor)
         {
-            ProxyActor = proxyActor;
+            mQueueActor = queueActor;
+            mProxyActor = proxyActor;
             ClientList = new Dictionary<string, ClientData>();
             Receive<ConnectMessage>(m=> {
 
                 if(ClientList.Keys.Where(c=>c==m.ConnectionID).Any())
                 {
-                    ProxyActor.Tell(new ProxyActor.LobbyActorUserAlreadyConnected(ClientList[m.ConnectionID]));
+                    mProxyActor.Tell(new ProxyActor.LobbyActorUserAlreadyConnected(ClientList[m.ConnectionID]));
                 }
                 else
                 {
@@ -32,7 +34,9 @@ namespace ColorWarsMultiplayerActors.Actors
                     var clientData = new ClientData(m.ConnectionID, m.UserName, userActor);
                     ClientList.Add(m.ConnectionID, clientData );
 
-                    ProxyActor.Tell(new ProxyActor.LobbyActorStatus("Connected to lobby.", clientData));
+
+                    mQueueActor.Tell(new QueueActor.NewUserInQueue(clientData));
+                    mProxyActor.Tell(new ProxyActor.LobbyActorStatus("Connected to lobby. Waiting for opponent.", clientData));
                 }
                
 

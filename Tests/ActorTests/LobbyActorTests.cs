@@ -19,7 +19,7 @@ namespace Tests.ActorTests
         private IActorRef _actor;
         private TestActorRef<LobbyActor> _testActor;
         private TestProbe _proxyActorProbe;
-
+        private TestProbe _queueActorProbe;
 
         private const string CONNECTION_ID= "valid connection id";
         private const string USER_NAME = "valid user name";
@@ -27,10 +27,14 @@ namespace Tests.ActorTests
         [SetUp]
         public void Setup()
         {
-            _proxyActorProbe = CreateTestProbe("");
+            _proxyActorProbe = CreateTestProbe();
+            _queueActorProbe = CreateTestProbe();
 
-            _actor = Sys.ActorOf(Props.Create(()=>new LobbyActor(_proxyActorProbe.Ref)));
-            _testActor = ActorOfAsTestActorRef<LobbyActor>(Props.Create(() => new LobbyActor(CreateTestProbe(""))));
+            var lobbyActorProps = Props.Create(() => new LobbyActor(_proxyActorProbe, _queueActorProbe));
+
+
+            _actor = Sys.ActorOf(lobbyActorProps);
+            _testActor = ActorOfAsTestActorRef<LobbyActor>(lobbyActorProps);
         }
 
 
@@ -43,6 +47,14 @@ namespace Tests.ActorTests
             var result=_testActor.UnderlyingActor.ClientList[CONNECTION_ID];
 
             Assert.AreEqual(USER_NAME, result.UserName);
+        }
+
+        [Test]
+        public void WhenUserConnects_SendsMessage()
+        {
+            _testActor.Tell(new LobbyActor.ConnectMessage(CONNECTION_ID, USER_NAME));
+
+            _proxyActorProbe.ExpectMsgFrom<ProxyActor.LobbyActorStatus>(_testActor);
         }
 
         [Test]
@@ -70,6 +82,14 @@ namespace Tests.ActorTests
 
         }
 
+
+        [Test]
+        public void WhenUserConnects_SendsUserToQueue()
+        {
+            _actor.Tell(new LobbyActor.ConnectMessage(CONNECTION_ID, USER_NAME));
+
+            _queueActorProbe.ExpectMsgFrom<QueueActor.NewUserInQueue>(_actor);
+        }
 
     }
 }

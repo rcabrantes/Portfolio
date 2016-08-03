@@ -15,6 +15,7 @@ namespace ColorWarsMultiplayerActors.Facade
 
         private static IActorRef _lobbyActor;
         private static IActorRef _proxyActor;
+        private static IActorRef _queueActor;
 
 
 
@@ -25,10 +26,8 @@ namespace ColorWarsMultiplayerActors.Facade
 
         public static void ConnectClient(string connectionID,string userName)
         {
-            if(_lobbyActor!=null)
-            {
-                _lobbyActor.Tell(new LobbyActor.ConnectMessage(connectionID,userName));
-            }
+            _lobbyActor.Tell(new LobbyActor.ConnectMessage(connectionID, userName));
+            
         }
 
         public static void Subscribe(IProxyClient client)
@@ -48,7 +47,8 @@ namespace ColorWarsMultiplayerActors.Facade
             _system = ActorSystem.Create("ColorWarsSystem");
 
             _proxyActor = _system.ActorOf<ProxyActor>("ProxyActor");
-            _lobbyActor = _system.ActorOf(Props.Create(()=>new LobbyActor(_proxyActor)));
+            _queueActor = _system.ActorOf(Props.Create(() => new QueueActor(_proxyActor)));
+            _lobbyActor = _system.ActorOf(Props.Create(()=>new LobbyActor(_proxyActor,_queueActor)));
 
 
         }

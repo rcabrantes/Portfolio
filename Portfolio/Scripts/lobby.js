@@ -7,7 +7,6 @@ class Lobby {
 
     connect(username) {
         this.hub.server.connect(username);
-        this.hub.server.ask();
     }
 
     displayServerMessage(message) {

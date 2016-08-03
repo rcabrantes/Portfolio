@@ -1,8 +1,9 @@
 ﻿<div class="lobby-container">
-    <span>Please choose a user name:</span>
-    <input type="text" id="user-name-input" value="rsinohara"/>
-    <button onclick="FindOpponentClick()">Find opponent</button>
-
+    <div id="user-name-selection">
+        <span>Please choose a user name:</span>
+        <input type="text" id="user-name-input" value="rsinohara" />
+        <button onclick="FindOpponentClick()">Find opponent</button>
+    </div>
     <div id="server-status-container"></div>
 
 </div>
@@ -18,7 +19,7 @@
     function FindOpponentClick() {
         //Wait until lobby it initialized
         while (!lobby.initialized);
-        
+        $('#user-name-selection').hide();
         lobby.connect($('#user-name-input').val());
 
     }

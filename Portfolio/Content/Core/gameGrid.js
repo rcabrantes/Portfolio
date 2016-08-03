@@ -117,7 +117,7 @@ class gameGrid {
     }
 
     updateDivDisplay(cell) {
-        cell.associatedDiv.className = 'cell content hexagon hexagon-' + cell.colorString();
+        cell.associatedDiv.className = 'cell content hexagon hexagon-' + cell.color;
         var ownerText;
         if (cell.owner < 1) {
             ownerText = "";

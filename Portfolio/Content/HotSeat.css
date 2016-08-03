@@ -32,15 +32,15 @@
 
 	content: '';
 }
-.hexagon-red:before{background-color:red}
-.hexagon-orange:before{background-color:orange}
-.hexagon-yellow:before{background-color:yellow}
-.hexagon-green:before{background-color:green}
-.hexagon-blue:before{background-color:blue}
-.hexagon-purple:before{background-color:purple}
-.hexagon-white:before{background-color:white}
-.hexagon-pink:before{background-color:pink}
-.hexagon-brown:before{background-color:brown}
+.hexagon-0:before{background-color:red}
+.hexagon-1:before{background-color:orange}
+.hexagon-2:before{background-color:yellow}
+.hexagon-3:before{background-color:#0F9200}
+.hexagon-4:before{background-color:#02B8D8}
+.hexagon-5:before{background-color:#86269B}
+.hexagon-6:before{background-color:#4AE54A}
+.hexagon-7:before{background-color:pink}
+.hexagon-8:before{background-color:#CC0063}
 
 .content:after {
      content: attr(data-content);

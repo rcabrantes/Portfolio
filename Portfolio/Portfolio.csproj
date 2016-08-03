@@ -278,9 +278,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\HotSeat2.css" />
-    <Content Include="Content\Core\gameCell.js" />
-    <Content Include="Content\Core\gameGrid.js" />
-    <Content Include="Content\Core\utilities.js" />
     <Content Include="Content\HotSeat.css" />
     <Content Include="Content\Libraries\jquery-1.10.2.js" />
     <Content Include="Content\Tests\GameGrid_DrawsCorrectly.html" />

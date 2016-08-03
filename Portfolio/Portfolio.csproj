@@ -263,45 +263,21 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\ColorWars\bin\Debug\Core\gameCell.js">
-      <Link>Content\Core\gameCell.js</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Core\GameGrid.js">
-      <Link>Content\Core\GameGrid.js</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Core\utilities.js">
-      <Link>Content\Core\utilities.js</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Libraries\jquery-1.10.2.js">
-      <Link>Content\Libraries\jquery-1.10.2.js</Link>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Tests\GameGrid_DrawsCorrectly.html">
-      <Link>Content\Tests\GameGrid_DrawsCorrectly.html</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Tests\GameGrid_WhenCreated_HasData.html">
-      <Link>Content\Tests\GameGrid_WhenCreated_HasData.html</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Tests\GameGrid_WhenPlayerChangesColor_CapturesCells.html">
-      <Link>Content\Tests\GameGrid_WhenPlayerChangesColor_CapturesCells.html</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Tests\HotSeat.css">
-      <Link>Content\Tests\HotSeat.css</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ColorWars\bin\Debug\Tests\HotSeatGame_Works.html">
-      <Link>Content\Tests\HotSeatGame_Works.html</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Core\gameCell.js" />
+    <Content Include="Content\Core\gameGrid.js" />
+    <Content Include="Content\Core\utilities.js" />
+    <Content Include="Content\HotSeat.css" />
+    <Content Include="Content\Libraries\jquery-1.10.2.js" />
+    <Content Include="Content\Tests\GameGrid_DrawsCorrectly.html" />
+    <Content Include="Content\Tests\GameGrid_WhenCreated_HasData.html" />
+    <Content Include="Content\Tests\GameGrid_WhenPlayerChangesColor_CapturesCells.html" />
+    <Content Include="Content\Tests\Grid_DrawsCorrectly_WithDivs.html" />
+    <Content Include="Content\Tests\HotSeatGame_Works.html" />
+    <Content Include="Content\Tests\HotSeatGame_Works_With_Divs.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

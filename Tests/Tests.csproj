@@ -108,6 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorTests\GameActorTests.cs" />
     <Compile Include="ActorTests\LobbyActorTests.cs" />
     <Compile Include="ActorTests\QueueActorTests.cs" />
     <Compile Include="Class1.cs" />

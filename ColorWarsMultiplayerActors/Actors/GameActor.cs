@@ -10,16 +10,15 @@ namespace ColorWarsMultiplayerActors.Actors
 {
     public partial class GameActor : ReceiveActor
     {
-        public IActorRef ProxyActor;
+        public IActorRef mProxyActor;
         public List<ClientData> Players;
 
         public GameActor(IActorRef proxyActor)
         {
-            ProxyActor = proxyActor;
+            mProxyActor = proxyActor;
 
             Receive<NewGameMessage>(m=> {
                 Players = m.Players;
-                                
             });
         }
 

@@ -9,6 +9,16 @@ namespace ColorWarsMultiplayerActors.Actors
 {
     public partial class ProxyActor
     {
+        public class GameCreatedMessage
+        {
+            public List<ClientData> Players;
+
+            public GameCreatedMessage(List<ClientData> players)
+            {
+                Players = players;
+            }
+        }
+
         public class LobbyActorStatus
         {
 

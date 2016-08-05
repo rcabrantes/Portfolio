@@ -20,8 +20,10 @@ namespace Tests.ActorTests
         private const string USER_NAME = "valid user id";
 
         private TestProbe _proxyActorProbe;
+
         private TestActorRef<QueueActor> _testActor;
         private TestProbe _userActor;
+        private TestProbe _secondUserActor;
         private IActorRef _actor;
         private ClientData _clientData;
 
@@ -36,8 +38,8 @@ namespace Tests.ActorTests
             _actor = Sys.ActorOf(props);
             _testActor = ActorOfAsTestActorRef<QueueActor>(props);
 
-           
- 
+
+            _secondUserActor = CreateTestProbe();
             
             _userActor = CreateTestProbe();
             _clientData = new ClientData(CONNECTION_ID, USER_NAME, _userActor);
@@ -63,6 +65,8 @@ namespace Tests.ActorTests
             Assert.AreEqual(1, _testActor.UnderlyingActor.UserQueue.Count);
 
         }
+
+
 
 
     }

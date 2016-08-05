@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actors\GameActor.cs" />
+    <Compile Include="Actors\GameActor.Messages.cs" />
     <Compile Include="Actors\LobbyActor.cs" />
     <Compile Include="Actors\LobbyActor.Messages.cs" />
     <Compile Include="Actors\ProxyActor.cs" />

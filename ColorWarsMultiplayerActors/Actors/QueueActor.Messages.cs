@@ -9,6 +9,8 @@ namespace ColorWarsMultiplayerActors.Actors
 {
     public partial class QueueActor
     {
+
+        public class CheckQueueStatus { }
         public class NewUserInQueue
         {
             public ClientData ClientData;

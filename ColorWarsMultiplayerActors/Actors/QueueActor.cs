@@ -12,6 +12,7 @@ namespace ColorWarsMultiplayerActors.Actors
     {
         public IActorRef ProxyActor;
         public Dictionary<string, ClientData> UserQueue;
+        private const int PLAYERS_PER_GAME = 2;
 
 
         public QueueActor(IActorRef proxyActor)
@@ -25,9 +26,27 @@ namespace ColorWarsMultiplayerActors.Actors
                 {
                     UserQueue.Add(m.ClientData.ConnectionID, m.ClientData);
 
+                    Self.Tell(new CheckQueueStatus());
                 }
 
 
+            });
+
+            Receive<CheckQueueStatus>(m=> {
+                if(UserQueue.Count>=PLAYERS_PER_GAME)
+                {
+                    var gamePlayers = UserQueue.Values.Take(PLAYERS_PER_GAME).ToList();
+
+                    for (int i = 0; i < PLAYERS_PER_GAME; i++)
+                    {
+                        UserQueue.Remove(gamePlayers[i].ConnectionID);
+
+                        var gameActor = Context.ActorOf(Props.Create(() => new GameActor(ProxyActor)));
+
+                        gameActor.Tell(new GameActor.NewGameMessage(gamePlayers));
+                    }
+
+                }
             });
 
         }

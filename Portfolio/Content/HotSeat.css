@@ -1,67 +1,24 @@
-﻿
-* { box-sizing:border-box; margin: 0; padding: 0; }
-
-.score{
-    border:2px solid red;
-    float:left;
-}
-
-.cell-container {
-    display:inline;
+﻿.darkClass
+{
+    background-color: white;
+    filter:alpha(opacity=50); /* IE */
+    opacity: 0.5; /* Safari, Opera */
+    -moz-opacity:0.50; /* FireFox */
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-position:center;
     position:absolute;
-    padding:0;
-}
-
-.hexagon {
-	position: relative;
-    width:100%;
-    height:100%;
-	display: inline-block;
-	overflow: hidden;
-    
-	margin: 0;
-	padding: 16%;
-	transform: rotate(30deg) skewY(30deg) scaleX(.866025); /* .866 = sqrt(3)/2 */
-}
-.hexagon:before, .content:after {
-	display: block;
-	position: absolute; /* 86.6% = (sqrt(3)/2)*100% = .866*100% */
-	top: 6.6987%; right: 0; bottom: 6.6987%; left: 0; /* 6.7% = (100% -86.6%)/2 */
-	transform: scaleX(1.1547) skewY(-30deg) rotate(-30deg); /* 1.155 = 2/sqrt(3) */
-	background-size: cover;
-
-	content: '';
-}
-.hexagon-0:before{background-color:red}
-.hexagon-1:before{background-color:orange}
-.hexagon-2:before{background-color:yellow}
-.hexagon-3:before{background-color:#0F9200}
-.hexagon-4:before{background-color:#02B8D8}
-.hexagon-5:before{background-color:#86269B}
-.hexagon-6:before{background-color:#4AE54A}
-.hexagon-7:before{background-color:pink}
-.hexagon-8:before{background-color:#CC0063}
-
-.content:after {
-     content: attr(data-content);
-     color:black; 
-     font-size:60%;
-	 text-align:center;
+    top: 0px;
+    left: 0px;
 }
 
 
 
-#test {
-   height:480px;
-   width:800px;
-   position:relative;
-   padding:0;
-}
 
-/*.cell {
-    position:absolute;
-    display:inline;
-}*/
+
+
 
 .darkClass
 {

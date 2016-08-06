@@ -1,4 +1,4 @@
-﻿###################
+###################
 # compiled source #
 ###################
 *.com
@@ -23,6 +23,8 @@ _UpgradeReport_Files/
 # Directories #
 ###############
 bin/
+*/bin/
+*/obj/
 obj/
 TestResults/
 ###################

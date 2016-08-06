@@ -277,7 +277,8 @@
     <Content Include="Content\Core\utilities.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\HotSeat2.css" />
+    <Content Include="Content\ColorWars.css" />
+    <Content Include="Content\game-page-style.css" />
     <Content Include="Content\HotSeat.css" />
     <Content Include="Content\Libraries\jquery-1.10.2.js" />
     <Content Include="Content\Tests\GameGrid_DrawsCorrectly.html" />

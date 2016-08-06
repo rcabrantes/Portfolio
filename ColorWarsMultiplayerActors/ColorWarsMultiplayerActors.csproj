@@ -61,6 +61,7 @@
     <Compile Include="Actors\QueueActor.Messages.cs" />
     <Compile Include="Actors\QueueActor.cs" />
     <Compile Include="Actors\UserActor.cs" />
+    <Compile Include="Actors\UserActor.Messages.cs" />
     <Compile Include="Facade\IProxyClient.cs" />
     <Compile Include="Facade\Proxy.cs" />
     <Compile Include="Models\ClientData.cs" />

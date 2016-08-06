@@ -19,6 +19,12 @@ namespace ColorWarsMultiplayerActors.Actors
 
             Receive<NewGameMessage>(m=> {
                 Players = m.Players;
+
+
+                foreach(var player in Players)
+                {
+                    player.UserActor.Tell(new UserActor.WelcomeToGameMessage());
+                }
             });
         }
 

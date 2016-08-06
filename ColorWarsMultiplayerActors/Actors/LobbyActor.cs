@@ -25,7 +25,7 @@ namespace ColorWarsMultiplayerActors.Actors
 
                 if(ClientList.Keys.Where(c=>c==m.ConnectionID).Any())
                 {
-                    mProxyActor.Tell(new ProxyActor.LobbyActorUserAlreadyConnected(ClientList[m.ConnectionID]));
+                    mProxyActor.Tell(new ProxyActor.UserAlreadyConnectedStatus(ClientList[m.ConnectionID]));
                 }
                 else
                 {
@@ -36,7 +36,7 @@ namespace ColorWarsMultiplayerActors.Actors
 
 
                     mQueueActor.Tell(new QueueActor.NewUserInQueue(clientData));
-                    mProxyActor.Tell(new ProxyActor.LobbyActorStatus("Connected to lobby. Waiting for opponent.", clientData));
+                    mProxyActor.Tell(new ProxyActor.ConnectedToLobbyStatus(clientData));
                 }
                
 

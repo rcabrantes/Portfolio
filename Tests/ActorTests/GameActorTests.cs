@@ -50,11 +50,16 @@ namespace Tests.ActorTests
             Assert.AreEqual(2, _testActor.UnderlyingActor.Players.Count);
         }
 
+        
+
+
         [Test]
-        public void WhenGameIsCreated_SendsMessageToProxy()
+        public void WhenGameIsCreated_WelcomesUserActors()
         {
             _actor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
-            _proxyActorProbe.ExpectMsg<ProxyActor.GameCreatedMessage>();
+
+            _userActorProbe1.ExpectMsg<UserActor.WelcomeToGameMessage>();
+            _userActorProbe2.ExpectMsg<UserActor.WelcomeToGameMessage>();
         }
     }
 }

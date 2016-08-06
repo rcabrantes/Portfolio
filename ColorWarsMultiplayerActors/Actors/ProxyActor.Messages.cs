@@ -9,23 +9,15 @@ namespace ColorWarsMultiplayerActors.Actors
 {
     public partial class ProxyActor
     {
-        public class GameCreatedMessage
-        {
-            public List<ClientData> Players;
 
-            public GameCreatedMessage(List<ClientData> players)
-            {
-                Players = players;
-            }
-        }
 
-        public class LobbyActorStatus
+        public abstract class LobbyActorStatusMessage
         {
 
             public string Message { get; private set; }
             public ClientData ClientData { get; private set; }
 
-            public LobbyActorStatus(string message, ClientData clientData)
+            public LobbyActorStatusMessage(string message, ClientData clientData)
             {
                 Message = message;
                 ClientData = clientData;
@@ -34,15 +26,21 @@ namespace ColorWarsMultiplayerActors.Actors
 
         }
 
-        public class LobbyActorUserAlreadyConnected
+        public class ConnectedToLobbyStatus:LobbyActorStatusMessage
+        {
+            public ConnectedToLobbyStatus(ClientData clientData):base("Connected to lobby. Waiting for opponent.",clientData)
+            {
+
+            }
+        }
+
+        public class UserAlreadyConnectedStatus:LobbyActorStatusMessage
         {
 
-            public ClientData ClientData { get; private set; }
 
-            public LobbyActorUserAlreadyConnected( ClientData clientData)
+            public UserAlreadyConnectedStatus( ClientData clientData):base("User already connected.",clientData)
             {
-                ClientData = clientData;
-            }
+           }
 
 
         }

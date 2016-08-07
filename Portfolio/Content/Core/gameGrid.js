@@ -117,7 +117,20 @@ class gameGrid {
     }
 
     updateDivDisplay(cell) {
+        var cellJ = $(cell.associatedDiv);
+        var active = cellJ.hasClass('hexagon-active');
+        var captured = cellJ.hasClass('hexagon-just-captured');
         cell.associatedDiv.className = 'cell content hexagon hexagon-' + cell.color;
+
+        var cellJ = $(cell.associatedDiv);
+
+        if (active) {
+            cellJ.addClass('hexagon-active');
+        }
+        if (captured) {
+            cellJ.addClass('hexagon-just-captured');
+        }
+
         var ownerText;
         if (cell.owner < 1) {
             ownerText = "";
@@ -129,13 +142,28 @@ class gameGrid {
     }
 
 
+    ClearJustCaptured(player) {
+
+        for (var i = 0; i < this.playerCells[player].length; i++)
+        {
+            this.playerCells[player][i].justCaptured = false;
+            $(this.playerCells[player][i].associatedDiv).removeClass('hexagon-just-captured');
+        }
+
+    }
+
     play(player,newColor)
     {
+
+        
+
         if (this.currentPlayer != player)
         {
             console.warn("Not this player's turn!");
             return;
         }
+
+        this.ClearJustCaptured(player);
 
         for (var i = 0; i < this.playerCells[player].length;i++)
         {
@@ -156,21 +184,49 @@ class gameGrid {
         
         this.updateScores();
 
+        this.nextPlayerTurn(player);
+            
+    }
+
+    setActive(player,active) {
+        for (var i = 0; i < this.playerCells[player].length; i++)
+        {
+            if (active) {
+                $(this.playerCells[player][i].associatedDiv).addClass('hexagon-active');
+            }
+            else {
+                $(this.playerCells[player][i].associatedDiv).removeClass('hexagon-active');
+            }
+
+            
+        }
+    }
+    
+    nextPlayerTurn(currentPlayer) {
+
+        this.setActive(currentPlayer,false);
         for (var i = 0; i < this.players.length; i++) {
-            if (this.players[i] == player) {
+            if (this.players[i] == currentPlayer) {
                 var nextPlayerIndex = (i + 1) % this.players.length;
                 this.currentPlayer = this.players[nextPlayerIndex];
+                break;
             }
         }
-            
+        this.setActive(this.currentPlayer, true);
+
     }
 
     captureCell(x,y,player)
     {
         this.grid[y][x].owner = player;
         this.playerCells[player].push(this.grid[y][x]);
-        if (this.usingDivs) {
-            this.updateDivDisplay(this.grid[y][x]);
+        this.grid[y][x].justCaptured = true;
+            
+
+
+       if (this.usingDivs) {
+           this.updateDivDisplay(this.grid[y][x]);
+           $(this.grid[y][x].associatedDiv).addClass('hexagon-just-captured');
         }
         if (!this.grid[y][x].surrounded) {
             this.checkNeighbors(this.grid[y][x]);
@@ -276,6 +332,15 @@ class gameGrid {
                 div.style.width = this.divWidth  + 'px';
                 div.style.height = this.divHeight + 'px';
                 //cell.className = 'cell content hexagon hexagon-' + this.grid[y][x].colorString();
+                
+                if (this.grid[y][x].owner != 0) {
+                    $(cell).addClass('hexagon-just-captured');
+                    
+                }
+                if (this.grid[y][x].owner == 1) {
+                    $(cell).addClass('hexagon-active');
+                }
+
                 
                 this.grid[y][x].associatedDiv = cell;
                 this.updateDivDisplay(this.grid[y][x]);

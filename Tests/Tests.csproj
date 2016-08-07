@@ -111,6 +111,7 @@
     <Compile Include="ActorTests\GameActorTests.cs" />
     <Compile Include="ActorTests\LobbyActorTests.cs" />
     <Compile Include="ActorTests\QueueActorTests.cs" />
+    <Compile Include="ActorTests\UserActorTests.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

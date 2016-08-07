@@ -58,8 +58,10 @@ namespace Tests.ActorTests
         {
             _actor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
 
-            _userActorProbe1.ExpectMsg<UserActor.WelcomeToGameMessage>();
-            _userActorProbe2.ExpectMsg<UserActor.WelcomeToGameMessage>();
+            _userActorProbe1.ExpectMsg<UserActor.WelcomeToGameMessage>(m=>m.GameActor.Path==_actor.Path);
+            _userActorProbe2.ExpectMsg<UserActor.WelcomeToGameMessage>(m => m.GameActor.Path == _actor.Path);
         }
+
+
     }
 }

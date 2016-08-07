@@ -40,11 +40,15 @@ namespace ColorWarsMultiplayerActors.Actors
                     for (int i = 0; i < PLAYERS_PER_GAME; i++)
                     {
                         UserQueue.Remove(gamePlayers[i].ConnectionID);
+                        ProxyActor.Tell(new ProxyActor.OpponentFoundStatus(gamePlayers[i]));
 
-                        var gameActor = Context.ActorOf(Props.Create(() => new GameActor(ProxyActor)));
-
-                        gameActor.Tell(new GameActor.NewGameMessage(gamePlayers));
+                        
                     }
+
+                    var gameActor = Context.ActorOf(Props.Create(() => new GameActor(ProxyActor)));
+
+
+                    gameActor.Tell(new GameActor.NewGameMessage(gamePlayers));
 
                 }
             });

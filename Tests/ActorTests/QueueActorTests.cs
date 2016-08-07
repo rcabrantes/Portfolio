@@ -54,6 +54,9 @@ namespace Tests.ActorTests
 
         }
 
+
+
+
         [Test]
         public void WhenSameUserIsAdded_DoesntAddToList()
         {
@@ -66,35 +69,26 @@ namespace Tests.ActorTests
 
         }
 
+        [Test]
+        public void WhenGameIsCreated_SendsStatus()
+        {
+            //Filling list with 2 users, _userActor is not important here
+            _testActor.UnderlyingActor.UserQueue.Add("conn1", new ClientData("conn1", "usr1", _userActor));
+            _testActor.UnderlyingActor.UserQueue.Add("conn2", new ClientData("conn2", "usr2", _userActor));
 
+            _testActor.Tell(new QueueActor.CheckQueueStatus());
+
+
+            //Expect one message for each user.
+            _proxyActorProbe.ExpectMsg<ProxyActor.OpponentFoundStatus>();
+            _proxyActorProbe.ExpectMsg<ProxyActor.OpponentFoundStatus>();
+            
+        }
 
 
     }
 
 
 
-    public class MyActor : UntypedActor
-    {
-        protected override void OnReceive(object message)
-        {
-            
-        }
-
-        // if any child of MyActor throws an exception, apply the rules below
-        // e.g. Restart the child, if 10 exceptions occur in 30 seconds or
-        // less, then stop the actor
-        protected override SupervisorStrategy SupervisorStrategy()
-        {
-            return new OneForOneStrategy(// or AllForOneStrategy
-                maxNrOfRetries: 10,
-                withinTimeMilliseconds:30,
-                decider:Decider.From( x =>
-                {
-                return Directive.Stop;
-                
-                }));
-        }
-
-    
-}
+  
 }

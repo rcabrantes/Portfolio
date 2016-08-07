@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="IIS Web Application Name" description="" value="rsinohara.com" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Renato\\OneDrive\\SPI\\Portfolio\\Portfolio\\obj\\Release\\Package\\PackageTmp$" />
-  </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Portfolio-20160717010926.mdf;Initial Catalog=aspnet-Portfolio-20160717010926;Integrated Security=True" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Renato\\OneDrive\\SPI\\Portfolio\\Portfolio\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-</parameters>

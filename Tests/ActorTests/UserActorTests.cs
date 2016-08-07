@@ -15,7 +15,7 @@ namespace Tests.ActorTests
     public class UserActorTests:TestKit
     {
         private IActorRef _actor;
-        private TestActorRef<GameActor> _testActor;
+        private TestActorRef<UserActor> _testActor;
 
         private TestProbe _proxyActorProbe;
         private TestProbe _gameActorProbe;
@@ -26,9 +26,9 @@ namespace Tests.ActorTests
             _proxyActorProbe = CreateTestProbe();
             _gameActorProbe = CreateTestProbe();
 
-            var props = Props.Create(() => new GameActor(_proxyActorProbe));
+            var props = Props.Create(() => new UserActor("conn1","user name",_proxyActorProbe));
             _actor = Sys.ActorOf(props);
-            _testActor = ActorOfAsTestActorRef<GameActor>(props);
+            _testActor = ActorOfAsTestActorRef<UserActor>(props);
 
         }
 
@@ -39,6 +39,14 @@ namespace Tests.ActorTests
             _actor.Tell(new UserActor.WelcomeToGameMessage(_gameActorProbe));
 
             _proxyActorProbe.ExpectMsg<ProxyActor.EnteredGameStatus>();
+        }
+
+        [Test]
+        public void WhenGameIsCreated_SavesGameActor()
+        {
+            _testActor.Tell(new UserActor.WelcomeToGameMessage(_gameActorProbe));
+
+            Assert.IsNotNull(_testActor.UnderlyingActor.GameActor);
         }
     }
 }

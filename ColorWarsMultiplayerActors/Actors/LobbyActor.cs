@@ -29,9 +29,11 @@ namespace ColorWarsMultiplayerActors.Actors
                 }
                 else
                 {
-                    var userActor = Context.ActorOf<UserActor>();
+                    var userActor = Context.ActorOf(Props.Create(() => new UserActor(m.ConnectionID,m.UserName,mProxyActor)));
 
                     var clientData = new ClientData(m.ConnectionID, m.UserName, userActor);
+
+
                     ClientList.Add(m.ConnectionID, clientData );
 
 

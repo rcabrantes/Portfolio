@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Akka.Actor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,12 @@ namespace ColorWarsMultiplayerActors.Actors
     {
         public class WelcomeToGameMessage
         {
+            public IActorRef GameActor { get; private set; }
 
+            public WelcomeToGameMessage(IActorRef gameActor)
+            {
+                GameActor = gameActor;
+            }
         }
     }
 }

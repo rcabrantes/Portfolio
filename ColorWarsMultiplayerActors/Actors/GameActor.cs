@@ -23,7 +23,7 @@ namespace ColorWarsMultiplayerActors.Actors
 
                 foreach(var player in Players)
                 {
-                    player.UserActor.Tell(new UserActor.WelcomeToGameMessage());
+                    player.UserActor.Tell(new UserActor.WelcomeToGameMessage(Self));
                 }
             });
         }

@@ -44,5 +44,17 @@ namespace ColorWarsMultiplayerActors.Actors
 
 
         }
+
+        public class OpponentFoundStatus : LobbyActorStatusMessage
+        {
+            public OpponentFoundStatus(ClientData clientData) : base("Opponent(s) found. Creating game.", clientData)
+            { }
+        }
+
+        public class EnteredGameStatus:LobbyActorStatusMessage
+        {
+            public EnteredGameStatus(ClientData clientData):base("Entered game. Initializing.",clientData)
+            { } 
+        }
     }
 }

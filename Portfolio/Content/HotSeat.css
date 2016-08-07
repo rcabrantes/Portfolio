@@ -1,5 +1,6 @@
-﻿.darkClass
-{
+
+
+.darkClass{
     background-color: white;
     filter:alpha(opacity=50); /* IE */
     opacity: 0.5; /* Safari, Opera */
@@ -14,14 +15,7 @@
     left: 0px;
 }
 
-
-
-
-
-
-
-.darkClass
-{
+.darkClass{
     background-color: white;
     filter:alpha(opacity=50); /* IE */
     opacity: 0.5; /* Safari, Opera */
@@ -45,6 +39,7 @@
     position:relative;
     display:block;
 }
+
 .active-controls{
     border:3px solid red;
 }

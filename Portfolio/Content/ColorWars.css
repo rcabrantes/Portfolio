@@ -1,12 +1,52 @@
 ﻿
 * { box-sizing:border-box; margin: 0; padding: 0; }
 
+body{
+  text-align: center;
+}
+
+header {
+  padding: 100px;
+  background-color: #02B8D8;
+  text-align: center;
+}
+
+h1 {
+  font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  text-overflow: clip;
+  text-shadow: 3px 3px 0 #0199d9 , 4px 4px 0 #0199d9 , 5px 5px 0 #0199d9 , 6px 6px 0 #0199d9 , 7px 7px 0 #0199d9 , 8px 8px 0 #0199d9 , 9px 9px 0 #0199d9 , 10px 10px 0 #0199d9 ,
+  11px 11px 0 #0199d9 , 12px 12px 0 #0199d9 , 13px 13px 0 #0199d9 , 14px 14px 0 #0199d9 , 15px 15px 0 #0199d9 , 16px 16px 0 #0199d9 , 17px 17px 0 #0199d9 , 18px 18px 0 #0199d9 , 19px 19px 0 #0199d9
+   , 20px 20px 0 #0199d9;
+}
+
+.top-flex-container{
+    display: -webkit-flex;
+    display: flex;
+    width: auto;
+    height: 100px;
+    background-color: lightgrey;
+}
+
+.player1-flex-item{
+    background-color: cornflowerblue;
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
+
+.player2-flex-item{
+    background-color: cornflowerblue;
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
+
 .score{
     border:2px solid red;
     float:left;
 }
-
-
 
 .cell-container {
     display:inline;
@@ -25,20 +65,21 @@
     height:100%;
 	display: inline-block;
 	overflow: hidden;
-    
+
 	margin: 0;
 	padding: 16%;
 	transform: rotate(30deg) skewY(30deg) scaleX(.866025); /* .866 = sqrt(3)/2 */
 }
+
 .hexagon:before, .content:after {
 	display: block;
 	position: absolute; /* 86.6% = (sqrt(3)/2)*100% = .866*100% */
 	top: 6.6987%; right: 0; bottom: 6.6987%; left: 0; /* 6.7% = (100% -86.6%)/2 */
 	transform: scaleX(1.1547) skewY(-30deg) rotate(-30deg); /* 1.155 = 2/sqrt(3) */
 	background-size: cover;
-
 	content: '';
 }
+
 .hexagon-0:before{background-color:red}
 .hexagon-1:before{background-color:orange}
 .hexagon-2:before{background-color:yellow}
@@ -49,35 +90,26 @@
 .hexagon-7:before{background-color:pink}
 .hexagon-8:before{background-color:#CC0063}
 
-
-
 .content:after {
      content: attr(data-content);
-     color:black; 
+     color:black;
      font-size:60%;
 	 text-align:center;
 }
-
-
 
 #test {
    height:480px;
    width:800px;
    position:relative;
    padding:0;
+   margin:auto;
 }
-
-
-
-
 
 .lobby-container {
     border:3px solid red;
     margin:10px;
     padding:10px;
 }
-
-
 
 .score {
     border:2px solid red;

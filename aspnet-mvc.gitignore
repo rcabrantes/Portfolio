@@ -15,7 +15,7 @@
 # Include dlls if they're in the CommonReferences directory
 !*CommonReferences/*.dll
 ####################
-# VS Upgrade stuff #
+# VS UpgradZZZZuff #
 ####################
 UpgradeLog.XML
 _UpgradeReport_Files/
@@ -23,9 +23,9 @@ _UpgradeReport_Files/
 # Directories #
 ###############
 bin/
-**/bin/
-*/obj/
+bin
 obj/
+obj
 TestResults/
 ###################
 # Web publish log #

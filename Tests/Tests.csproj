@@ -113,6 +113,7 @@
     <Compile Include="ActorTests\QueueActorTests.cs" />
     <Compile Include="ActorTests\UserActorTests.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ComponentsTests\GameGridTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

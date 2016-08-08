@@ -65,6 +65,8 @@
     <Compile Include="Facade\IProxyClient.cs" />
     <Compile Include="Facade\Proxy.cs" />
     <Compile Include="Models\ClientData.cs" />
+    <Compile Include="Models\GameCell.cs" />
+    <Compile Include="Models\GameGrid.cs" />
     <Compile Include="Models\PingMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

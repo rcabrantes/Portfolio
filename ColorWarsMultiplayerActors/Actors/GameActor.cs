@@ -25,6 +25,8 @@ namespace ColorWarsMultiplayerActors.Actors
                 {
                     player.UserActor.Tell(new UserActor.WelcomeToGameMessage(Self));
                 }
+
+
             });
         }
 

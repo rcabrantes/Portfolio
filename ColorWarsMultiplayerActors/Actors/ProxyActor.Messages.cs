@@ -10,14 +10,32 @@ namespace ColorWarsMultiplayerActors.Actors
     public partial class ProxyActor
     {
 
+        public abstract class ClientCallCommand
+        {
+            public string ConnectionID { get; private set; }
 
-        public abstract class LobbyActorStatusMessage
+            public ClientCallCommand(string connectionID)
+            {
+                ConnectionID = connectionID;
+            }
+        }
+
+
+        public class GameInitCommand:ClientCallCommand
+        {
+
+            public GameInitCommand(string connectionID):base(connectionID)
+            {
+
+            }
+        }
+        public abstract class StatusMessageBase
         {
 
             public string Message { get; private set; }
             public ClientData ClientData { get; private set; }
 
-            public LobbyActorStatusMessage(string message, ClientData clientData)
+            public StatusMessageBase(string message, ClientData clientData)
             {
                 Message = message;
                 ClientData = clientData;
@@ -26,7 +44,7 @@ namespace ColorWarsMultiplayerActors.Actors
 
         }
 
-        public class ConnectedToLobbyStatus:LobbyActorStatusMessage
+        public class ConnectedToLobbyStatus:StatusMessageBase
         {
             public ConnectedToLobbyStatus(ClientData clientData):base("Connected to lobby. Waiting for opponent.",clientData)
             {
@@ -34,7 +52,7 @@ namespace ColorWarsMultiplayerActors.Actors
             }
         }
 
-        public class UserAlreadyConnectedStatus:LobbyActorStatusMessage
+        public class UserAlreadyConnectedStatus:StatusMessageBase
         {
 
 
@@ -45,13 +63,13 @@ namespace ColorWarsMultiplayerActors.Actors
 
         }
 
-        public class OpponentFoundStatus : LobbyActorStatusMessage
+        public class OpponentFoundStatus : StatusMessageBase
         {
             public OpponentFoundStatus(ClientData clientData) : base("Opponent(s) found. Creating game.", clientData)
             { }
         }
 
-        public class EnteredGameStatus:LobbyActorStatusMessage
+        public class EnteredGameStatus:StatusMessageBase
         {
             public EnteredGameStatus(ClientData clientData):base("Entered game. Initializing.",clientData)
             { } 

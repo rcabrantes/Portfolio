@@ -48,5 +48,7 @@ namespace Tests.ActorTests
 
             Assert.IsNotNull(_testActor.UnderlyingActor.GameActor);
         }
+
+
     }
 }

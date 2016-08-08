@@ -54,7 +54,7 @@ namespace Tests.ActorTests
         {
             _testActor.Tell(new LobbyActor.ConnectMessage(CONNECTION_ID, USER_NAME));
 
-            _proxyActorProbe.ExpectMsgFrom<ProxyActor.LobbyActorStatusMessage>(_testActor);
+            _proxyActorProbe.ExpectMsgFrom<ProxyActor.StatusMessageBase>(_testActor);
         }
 
         [Test]
@@ -73,7 +73,7 @@ namespace Tests.ActorTests
         {
             _actor.Tell(new LobbyActor.ConnectMessage(CONNECTION_ID, USER_NAME));
 
-            _proxyActorProbe.ExpectMsgFrom<ProxyActor.LobbyActorStatusMessage>(_actor);
+            _proxyActorProbe.ExpectMsgFrom<ProxyActor.StatusMessageBase>(_actor);
 
             _actor.Tell(new LobbyActor.ConnectMessage(CONNECTION_ID, USER_NAME));
 

@@ -12,8 +12,12 @@ namespace ColorWarsMultiplayerActors.Actors
     {
         public ProxyActor()
         {
-            Receive<LobbyActorStatusMessage>(m=> {
+            Receive<StatusMessageBase>(m=> {
                 Proxy.ServerStatusLog(m.ClientData.ConnectionID, m.Message);
+            });
+
+            Receive<GameInitCommand>(m => {
+
             });
         }
     }

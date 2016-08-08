@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ColorWarsMultiplayerActors.Models;
 
 namespace ColorWarsMultiplayerActors.Facade
 {
@@ -10,5 +11,6 @@ namespace ColorWarsMultiplayerActors.Facade
     {
 
         void SystemStatusLog(string connectionID, string message);
+        void GameInit(string connectionID,GameCell[,] grid);
     }
 }

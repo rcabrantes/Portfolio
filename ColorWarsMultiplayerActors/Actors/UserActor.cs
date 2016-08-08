@@ -13,6 +13,7 @@ namespace ColorWarsMultiplayerActors.Actors
         public IActorRef mProxyActor;
         public ClientData MyClient;
         public IActorRef GameActor;
+        public GameGrid GameData;
 
         public UserActor(string connectionID, string userName, IActorRef proxyActor)
         {
@@ -23,6 +24,12 @@ namespace ColorWarsMultiplayerActors.Actors
                 mProxyActor.Tell(new ProxyActor.EnteredGameStatus(MyClient));
 
                 GameActor = m.GameActor;
+            });
+
+            Receive<GameInitializedMessage>(m=> {
+                GameData = m.GameData;
+
+                mProxyActor.Tell(new ProxyActor.GameInitCommand(MyClient.ConnectionID, GameData));
             });
         }
     }

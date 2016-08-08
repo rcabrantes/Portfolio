@@ -12,6 +12,11 @@ namespace ColorWarsMultiplayerActors.Actors
     {
         public IActorRef mProxyActor;
         public List<ClientData> Players;
+        public GameGrid GameData;
+
+        public const int GAME_HORIZONTAL_SIZE = 72;
+
+        public const int GAME_VERTICAL_SIZE = 72;
 
         public GameActor(IActorRef proxyActor)
         {
@@ -19,15 +24,24 @@ namespace ColorWarsMultiplayerActors.Actors
 
             Receive<NewGameMessage>(m=> {
                 Players = m.Players;
-
-
-                foreach(var player in Players)
-                {
-                    player.UserActor.Tell(new UserActor.WelcomeToGameMessage(Self));
-                }
-
+                
+                TellEveryPlayer(new UserActor.WelcomeToGameMessage(Self));
+                
+                GameData = new GameGrid(GAME_HORIZONTAL_SIZE, GAME_VERTICAL_SIZE);
+                TellEveryPlayer(new UserActor.GameInitializedMessage(GameData));
+                
 
             });
+
+
+        }
+
+        private void TellEveryPlayer(object message)
+        {
+            foreach (var player in Players)
+            {
+                player.UserActor.Tell(message);
+            }
         }
 
         

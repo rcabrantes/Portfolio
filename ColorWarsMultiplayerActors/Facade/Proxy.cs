@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ColorWarsMultiplayerActors.Models;
 
 namespace ColorWarsMultiplayerActors.Facade
 {
@@ -22,6 +23,11 @@ namespace ColorWarsMultiplayerActors.Facade
         public static void ServerStatusLog(string connectionID, string message)
         {
             _client.SystemStatusLog(connectionID, message);
+        }
+
+        internal static void GameInit(string connectionID,GameCell[,] grid)
+        {
+            _client.GameInit(connectionID,grid);
         }
 
         public static void ConnectClient(string connectionID,string userName)

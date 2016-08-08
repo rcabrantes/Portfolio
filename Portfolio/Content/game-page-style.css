@@ -10,7 +10,9 @@ header {
 }
 
 h1 {
-    font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+    /*font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;*/
+    font: normal 60px/1;
+    font-family: 'Press Start 2P', cursive;
     color: rgba(255,255,255,1);
     text-align: center;
     text-overflow: clip;
@@ -30,6 +32,9 @@ h1 {
 }
 
 #player {
+    vertical-align: middle;
+    display: inline-block;
+    font: normal 8px 'Press Start 2P', cursive;
     background-color: cornflowerblue;
     height: 100%;
     border-style: solid;

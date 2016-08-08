@@ -21,6 +21,7 @@ namespace ColorWarsMultiplayerActors.Models
             VerticalCount = verticalCount;
 
             Grid = new GameCell[horizontalCount, verticalCount];
+            
 
             for(int x=0;x<horizontalCount;x++)
             {

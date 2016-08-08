@@ -1,6 +1,44 @@
 ﻿"use strict";
 class gameGrid {
 
+    initializeGridFromServer(gameData) {
+        
+        
+
+        this.grid = Array();
+
+        
+        //This assumes the array is rectangular
+        for (var y = 0; y < gameData[0].length; y++) {
+            this.grid[y] = Array();
+            for (var x = 0; x < gameData.length; x++) {
+                var cell = new gameCell();
+                cell.color = gameData[x][y].Color;
+                cell.owner = gameData[x][y].Owner;
+                cell.surrounded = false;
+                this.grid[y][x] = cell;
+                cell.x = x;
+                cell.y = y;
+            }
+        }
+
+        alert(this.grid.length);
+        var re = new gameGrid;
+        re.initializeGrid(72, 36);
+        alert(re.grid.length);
+
+
+        this.horizontalCount = x;
+        this.verticalCount = y;
+
+        this.playerCells = Array();
+        this.playerCountElements = Array();
+        this.players = Array();
+        this.currentPlayer = 1;
+
+    }
+
+
     initializeGrid(width, height) {
 
         //Saves grid dimensions

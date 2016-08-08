@@ -23,5 +23,10 @@ namespace Portfolio.Controllers
         {
             return PartialView("LobbyPartial");
         }
+
+        public PartialViewResult MultiplayerGamePartial()
+        {
+            return PartialView("MultiplayerGamePartial");
+        }
     }
 }

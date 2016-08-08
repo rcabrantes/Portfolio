@@ -19,10 +19,18 @@ class Lobby {
         }
     }
 
+    setGameInitCallback(callback) {
+        this.gameInitCallback = callback;
+    }
+
     setupCallbacks() {
         this.hub.client.serverStatusLog = function (message) {
             lobby.displayServerMessage(message);
         };
+
+        this.hub.client.gameInit = function (gameData) {
+            lobby.gameInitCallback(gameData);
+        }
     }
 
     init() {
@@ -48,3 +56,4 @@ class Lobby {
 }
 
 var lobby = new Lobby;
+var grid = new gameGrid;

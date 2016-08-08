@@ -358,7 +358,8 @@
     <Content Include="Views\ColorWars\TestHubLogin.cshtml" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.0.min.map" />
-    <Content Include="Views\Shared\LobbyPartial.cshtml" />
+    <Content Include="Views\ColorWars\LobbyPartial.cshtml" />
+    <Content Include="Views\ColorWars\MultiplayerGamePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

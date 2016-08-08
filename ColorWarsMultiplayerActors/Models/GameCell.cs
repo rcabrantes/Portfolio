@@ -12,11 +12,18 @@ namespace ColorWarsMultiplayerActors.Models
 
         public int Color { get; set; }
 
+        public static Random myRandom;
 
         public GameCell()
         {
+
+            if(myRandom==null)
+            {
+                myRandom = new Random();
+            }
+
             Owner = 0;
-            Color = new Random().Next(9);
+            Color = myRandom.Next(9);
         }
     }
 }

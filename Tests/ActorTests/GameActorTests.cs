@@ -63,5 +63,24 @@ namespace Tests.ActorTests
         }
 
 
+        [Test]
+        public void WhenGameIsCreated_InitializesGrid()
+        {
+            _testActor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
+
+            Assert.AreEqual(GameActor.GAME_HORIZONTAL_SIZE, _testActor.UnderlyingActor.GameData.HorizontalCount);
+        }
+
+        [Test]
+        public void WhenGameIsCreated_SendsGridToUserActors()
+        {
+            _actor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
+
+            _userActorProbe1.IgnoreMessages(m=> m is UserActor.WelcomeToGameMessage);
+            _userActorProbe2.IgnoreMessages(m => m is UserActor.WelcomeToGameMessage);
+
+            _userActorProbe1.ExpectMsg<UserActor.GameInitializedMessage>();
+            _userActorProbe2.ExpectMsg<UserActor.GameInitializedMessage>();
+        }
     }
 }

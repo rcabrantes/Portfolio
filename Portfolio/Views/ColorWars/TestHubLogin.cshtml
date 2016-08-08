@@ -34,8 +34,8 @@
         <div><h1>Color Wars</h1></div>
         <div><a class="Button1" id="OnlineOpponentStart">Find online opponent</a></div>
     </header>
-    <div id="container"></div>
-
+    <div id="lobby-container"></div>
+    <div id="game-container"></div>
 </body>
 
 
@@ -49,9 +49,23 @@
                 type:'GET',
                 dataType:'html'
             }).done(function(result){
-                $('#container').html(result);
+                $('#lobby-container').html(result);
+                lobby.setGameInitCallback( function (gameData) {
+
+                    $.ajax({
+                        url: '@Url.Action("MultiplayerGamePartial")',
+                        contentType: 'application/html;charset=utf-8',
+                        type: 'GET',
+                        dataType: 'html'
+                    }).done(function (result) {
+                        $('#game-container').html(result);
+                        grid.initializeGridFromServer(gameData);
+                        grid.drawDivs($('#game-grid'));
+                    });
+                }
+                );
+                })
             });
-        })
-    });
+        });
 
 </script>

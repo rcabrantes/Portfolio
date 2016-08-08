@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ActorSideProxy = ColorWarsMultiplayerActors.Facade.Proxy;
+using ColorWarsMultiplayerActors.Models;
 
 namespace Portfolio
 {
@@ -33,17 +34,27 @@ namespace Portfolio
         }
 
 
-        
 
-#endregion
 
-#region "Actors side calls"
+
+
+        #endregion
+
+        #region "Actors side calls"
+
         public void SystemStatusLog(string connectionID,string message)
         {
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<ColorWarsHub>();
             hubContext.Clients.Client(connectionID).serverStatusLog(message);
         }
 
-#endregion
+
+        public void GameInit(string connectionID,GameCell[,] grid)
+        {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ColorWarsHub>();
+            hubContext.Clients.Client(connectionID).gameInit(grid);
+        }
+
+        #endregion
     }
 }

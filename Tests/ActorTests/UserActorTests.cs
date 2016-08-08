@@ -2,6 +2,7 @@
 using Akka.TestKit;
 using Akka.TestKit.NUnit;
 using ColorWarsMultiplayerActors.Actors;
+using ColorWarsMultiplayerActors.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,20 @@ namespace Tests.ActorTests
             Assert.IsNotNull(_testActor.UnderlyingActor.GameActor);
         }
 
+        [Test]
+        public void WhenGameIsInitialized_SavesGameData()
+        {
+            _testActor.Tell(new UserActor.GameInitializedMessage(new GameGrid(72,36)));
 
+            Assert.IsNotNull(_testActor.UnderlyingActor.GameData);
+        }
+
+        [Test]
+        public void WhenGameIsInitialized_SendsGameInit()
+        {
+            _actor.Tell(new UserActor.GameInitializedMessage(new GameGrid(72, 36)));
+
+            _proxyActorProbe.ExpectMsg<ProxyActor.GameInitCommand>();
+        }
     }
 }

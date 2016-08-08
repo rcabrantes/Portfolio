@@ -1,4 +1,11 @@
 ﻿
+
+#game-grid{
+    width:800px;
+    height:400px;
+    position:absolute;
+}
+
 body {
             text-align: center;
         }

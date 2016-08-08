@@ -16,7 +16,7 @@ namespace ColorWarsMultiplayerActors.Actors
 
         public const int GAME_HORIZONTAL_SIZE = 72;
 
-        public const int GAME_VERTICAL_SIZE = 72;
+        public const int GAME_VERTICAL_SIZE = 36;
 
         public GameActor(IActorRef proxyActor)
         {

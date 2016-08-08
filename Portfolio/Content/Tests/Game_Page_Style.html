@@ -22,8 +22,14 @@
 
 <body>
     <div class="row" id="top-container">
-        <div class="col-md-6" id="player">Player 1</div>
-        <div class="col-md-6" id="player">Player 2</div>
+        <div class="col-md-6" id="player">
+          <span>Player 1</span>
+          <p><span>Score: </span><span id="score1"></span></p>
+        </div>
+        <div class="col-md-6" id="player">
+          <span>Player 2</span>
+          <p><span>Score: </span><span id="score2"><span></p>
+        </div>
     </div>
 
     <div>
@@ -37,12 +43,6 @@
         <div id="colorControls1"></div>
     </div>
     <br />
-    <div class="score">
-        <h3>Scores</h3>
-        <span>Player 1: </span> <span id="score1"></span>
-        <br />
-        <span>Player 2: </span><span id="score2"></span>
-    </div>
     <div id="test" height="480" width="800" style="background-color:white"></div>
     <input type="submit" value="Draw" onclick="drawClick()" />
 

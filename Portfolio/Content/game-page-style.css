@@ -27,19 +27,30 @@ h1 {
 
 #top-container {
     width: auto;
-    height: 100px;
+    height: auto;
     background-color: lightgrey;
+    margin-left: 0;
 }
 
 #player {
-    vertical-align: middle;
-    display: inline-block;
-    font: normal 8px 'Press Start 2P', cursive;
+    text-align: left;
+    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-left: 15px;
     background-color: cornflowerblue;
-    height: 100%;
     border-style: solid;
     border-color: black;
     border-width: 3px;
+}
+
+#player > span {
+    font: normal 16px 'Press Start 2P', cursive;
+    margin: 0;
+}
+
+#player > p {
+    font: normal 16px 'Press Start 2P', cursive;
+    margin: 0;
 }
 
 .Button1 {

@@ -68,6 +68,7 @@
     <Compile Include="Models\GameCell.cs" />
     <Compile Include="Models\GameGrid.cs" />
     <Compile Include="Models\PingMessages.cs" />
+    <Compile Include="Models\PlayerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

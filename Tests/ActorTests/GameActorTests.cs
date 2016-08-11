@@ -23,8 +23,8 @@ namespace Tests.ActorTests
         private TestProbe _userActorProbe2;
         private TestProbe _proxyActorProbe;
 
-        private ClientData _userData1;
-        private ClientData _userData2;
+        private PlayerData _userData1;
+        private PlayerData _userData2;
 
         [SetUp]
         public void Setup()
@@ -38,14 +38,14 @@ namespace Tests.ActorTests
             _testActor = ActorOfAsTestActorRef<GameActor>(props);
             _actor = Sys.ActorOf(props);
 
-            _userData1 = new ClientData("connection ID 1", "user 1", _userActorProbe1);
-            _userData2 = new ClientData("connection ID 2", "user 2", _userActorProbe2);
+            _userData1 = new PlayerData("connection ID 1", "user 1", _userActorProbe1,1);
+            _userData2 = new PlayerData("connection ID 2", "user 2", _userActorProbe2,2);
         }
 
         [Test]
         public void WhenGameIsCreated_AddsPlayersToList()
         {
-            _testActor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
+            _testActor.Tell(new GameActor.NewGameMessage(new List<PlayerData>() { _userData1, _userData2 }));
 
             Assert.AreEqual(2, _testActor.UnderlyingActor.Players.Count);
         }
@@ -56,7 +56,7 @@ namespace Tests.ActorTests
         [Test]
         public void WhenGameIsCreated_WelcomesUserActors()
         {
-            _actor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
+            _actor.Tell(new GameActor.NewGameMessage(new List<PlayerData>() { _userData1, _userData2 }));
 
             _userActorProbe1.ExpectMsg<UserActor.WelcomeToGameMessage>(m=>m.GameActor.Path==_actor.Path);
             _userActorProbe2.ExpectMsg<UserActor.WelcomeToGameMessage>(m => m.GameActor.Path == _actor.Path);
@@ -66,7 +66,7 @@ namespace Tests.ActorTests
         [Test]
         public void WhenGameIsCreated_InitializesGrid()
         {
-            _testActor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
+            _testActor.Tell(new GameActor.NewGameMessage(new List<PlayerData>() { _userData1, _userData2 }));
 
             Assert.AreEqual(GameActor.GAME_HORIZONTAL_SIZE, _testActor.UnderlyingActor.GameData.HorizontalCount);
         }
@@ -74,13 +74,23 @@ namespace Tests.ActorTests
         [Test]
         public void WhenGameIsCreated_SendsGridToUserActors()
         {
-            _actor.Tell(new GameActor.NewGameMessage(new List<ClientData>() { _userData1, _userData2 }));
+            _actor.Tell(new GameActor.NewGameMessage(new List<PlayerData>() { _userData1, _userData2 }));
 
             _userActorProbe1.IgnoreMessages(m=> m is UserActor.WelcomeToGameMessage);
             _userActorProbe2.IgnoreMessages(m => m is UserActor.WelcomeToGameMessage);
 
             _userActorProbe1.ExpectMsg<UserActor.GameInitializedMessage>();
             _userActorProbe2.ExpectMsg<UserActor.GameInitializedMessage>();
+        }
+
+        [Test]
+        public void WhenGameIsCreated_InitializesPlayersPositions()
+        {
+            _testActor.Tell(new GameActor.NewGameMessage(new List<PlayerData>() { _userData1, _userData2 }));
+
+            var query = _testActor.UnderlyingActor.GameData.Grid.Cast<GameCell>();
+            Assert.IsTrue(query.Where(c => c.Owner == 1).Count() >= 1);
+            Assert.IsTrue(query.Where(c => c.Owner == 2).Count() >= 1);
         }
     }
 }

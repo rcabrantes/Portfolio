@@ -37,7 +37,7 @@ namespace Tests.ActorTests
         [Test]
         public void WhenGameIsCreated_SendsStatus()
         {
-            _actor.Tell(new UserActor.WelcomeToGameMessage(_gameActorProbe));
+            _actor.Tell(new UserActor.WelcomeToGameMessage(_gameActorProbe,1));
 
             _proxyActorProbe.ExpectMsg<ProxyActor.EnteredGameStatus>();
         }
@@ -45,7 +45,7 @@ namespace Tests.ActorTests
         [Test]
         public void WhenGameIsCreated_SavesGameActor()
         {
-            _testActor.Tell(new UserActor.WelcomeToGameMessage(_gameActorProbe));
+            _testActor.Tell(new UserActor.WelcomeToGameMessage(_gameActorProbe,1));
 
             Assert.IsNotNull(_testActor.UnderlyingActor.GameActor);
         }

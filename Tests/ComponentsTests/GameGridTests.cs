@@ -169,6 +169,16 @@ namespace Tests.ComponentsTests
             
         }
 
+        [Test]
+        public void WhenSettingInitialPositions_WithTwoPlayers_ChoosesOpposingCorners()
+        {
+            SetupPlayableGrid();
 
+            grid.SetInitialPositions(2);
+
+            Assert.AreEqual(1, grid.Grid[0, 0].Owner);
+            Assert.AreEqual(2, grid.Grid[2, 2].Owner);
+
+        }
     }
 }

@@ -28,7 +28,8 @@ class Lobby {
             lobby.displayServerMessage(message);
         };
 
-        this.hub.client.gameInit = function (gameData) {
+        this.hub.client.gameInit = function (playerNumber, gameData) {
+            lobby.localPlayerNumber = playerNumber;
             lobby.gameInitCallback(gameData);
         }
     }

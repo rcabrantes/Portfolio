@@ -22,12 +22,7 @@ class gameGrid {
             }
         }
 
-        alert(this.grid.length);
-        var re = new gameGrid;
-        re.initializeGrid(72, 36);
-        alert(re.grid.length);
-
-
+ 
         this.horizontalCount = x;
         this.verticalCount = y;
 

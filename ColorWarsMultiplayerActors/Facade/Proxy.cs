@@ -25,9 +25,9 @@ namespace ColorWarsMultiplayerActors.Facade
             _client.SystemStatusLog(connectionID, message);
         }
 
-        internal static void GameInit(string connectionID,GameCell[,] grid)
+        internal static void GameInit(string connectionID,int playerNumber,GameCell[,] grid)
         {
-            _client.GameInit(connectionID,grid);
+            _client.GameInit(connectionID, playerNumber, grid);
         }
 
         public static void ConnectClient(string connectionID,string userName)

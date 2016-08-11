@@ -13,9 +13,9 @@ namespace ColorWarsMultiplayerActors.Actors
 
         public class NewGameMessage
         {
-            public List<ClientData> Players;
+            public List<PlayerData> Players;
 
-            public NewGameMessage(List<ClientData> gamePlayers)
+            public NewGameMessage(List<PlayerData> gamePlayers)
             {
                 Players = gamePlayers;
             }

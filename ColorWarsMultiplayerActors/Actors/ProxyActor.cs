@@ -17,7 +17,7 @@ namespace ColorWarsMultiplayerActors.Actors
             });
 
             Receive<GameInitCommand>(m => {
-                Proxy.GameInit(m.ConnectionID,m.GameData.Grid);
+                Proxy.GameInit(m.ConnectionID,m.PlayerNumber,m.GameData.Grid);
             });
         }
     }

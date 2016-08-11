@@ -11,6 +11,6 @@ namespace ColorWarsMultiplayerActors.Facade
     {
 
         void SystemStatusLog(string connectionID, string message);
-        void GameInit(string connectionID,GameCell[,] grid);
+        void GameInit(string connectionID,int playerNumber,GameCell[,] grid);
     }
 }

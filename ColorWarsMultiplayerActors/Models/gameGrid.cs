@@ -13,7 +13,7 @@ namespace ColorWarsMultiplayerActors.Models
 
         public GameCell[,] Grid { get; private set; }
 
-        
+        private Random myRandom;
 
         public GameGrid(int horizontalCount,int verticalCount)
         {
@@ -21,6 +21,8 @@ namespace ColorWarsMultiplayerActors.Models
             VerticalCount = verticalCount;
 
             Grid = new GameCell[horizontalCount, verticalCount];
+
+            myRandom = new Random();
             
 
             for(int x=0;x<horizontalCount;x++)
@@ -121,6 +123,19 @@ namespace ColorWarsMultiplayerActors.Models
                         }
                     }
                 }
+            }
+        }
+
+        public void SetInitialPositions(int playerCount)
+        {
+            if (playerCount == 2)
+            {
+                CaptureCell(1, 0, 0);
+                CaptureCell(2, HorizontalCount - 1, VerticalCount - 1);
+            }
+            else
+            {
+                throw new NotImplementedException("Not implemented for " + playerCount + " players.");
             }
         }
     }

@@ -2,12 +2,12 @@
 class gameGrid {
 
     initializeGridFromServer(gameData) {
-        
-        
+
+
 
         this.grid = Array();
 
-        
+
         //This assumes the array is rectangular
         for (var y = 0; y < gameData[0].length; y++) {
             this.grid[y] = Array();
@@ -21,11 +21,6 @@ class gameGrid {
                 cell.y = y;
             }
         }
-
-        alert(this.grid.length);
-        var re = new gameGrid;
-        re.initializeGrid(72, 36);
-        alert(re.grid.length);
 
 
         this.horizontalCount = x;
@@ -108,23 +103,23 @@ class gameGrid {
     initDivsSteps() {
 
 
-        
 
-        
+
+
         var r=Math.sqrt(3)/2;
 
         //Vertical step is calculated first because it is taken into account on overlap calculation
         this.divHeight = this.containerHeight / (this.verticalCount + 0.5 + (1 - r) / 2);
-        
+
         //Then vertical steps are corrected to account for the symetry adjustment
         this.divHeight = this.divHeight / r;
-        
+
         var nx = this.horizontalCount;
         //Then horizontal step with overlap taken into account
         this.divWidth = 4 * this.containerWidth / (3 * nx + 1);
 
 
-        
+
 
 
 
@@ -133,16 +128,20 @@ class gameGrid {
 
 
     }
-    
+
     setPlayerCell(x, y, player) {
 
         this.playerCells[player]=Array();
-     
+
         this.captureCell(x, y, player);
         this.players.push(player);
         if (player < this.currentPlayer) {
             this.currentPlayer = player;
         }
+
+        this.grid[y][x].initialCell=true;
+
+
         this.updateScores();
     }
 
@@ -168,7 +167,9 @@ class gameGrid {
         if (captured) {
             cellJ.addClass('hexagon-just-captured');
         }
-
+        if (cell.initialCell) {
+            cellJ.addClass('initial-player-cell');
+        }
         var ownerText;
         if (cell.owner < 1) {
             ownerText = "";
@@ -193,7 +194,7 @@ class gameGrid {
     play(player,newColor)
     {
 
-        
+
 
         if (this.currentPlayer != player)
         {
@@ -219,11 +220,11 @@ class gameGrid {
         }
 
         this.draw();
-        
+
         this.updateScores();
 
         this.nextPlayerTurn(player);
-            
+
     }
 
     setActive(player,active) {
@@ -236,10 +237,10 @@ class gameGrid {
                 $(this.playerCells[player][i].associatedDiv).removeClass('hexagon-active');
             }
 
-            
+
         }
     }
-    
+
     nextPlayerTurn(currentPlayer) {
 
         this.setActive(currentPlayer,false);
@@ -259,7 +260,7 @@ class gameGrid {
         this.grid[y][x].owner = player;
         this.playerCells[player].push(this.grid[y][x]);
         this.grid[y][x].justCaptured = true;
-            
+
 
 
        if (this.usingDivs) {
@@ -313,7 +314,7 @@ class gameGrid {
 
                 }
             }
-            
+
         }
         cell.surrounded=surrounded
     }
@@ -345,7 +346,7 @@ class gameGrid {
 
 
         for (var y = 0; y < this.grid.length; y++) {
-            
+
             for (var x = 0; x < this.grid[y].length; x++) {
 
                 var div = document.createElement('div');
@@ -362,7 +363,7 @@ class gameGrid {
                 if ((x % 2) == 0) {
                     top += (this.divHeight * r / 2);
                 }
-  
+
 
 
                 div.style.left = left + 'px';
@@ -370,16 +371,19 @@ class gameGrid {
                 div.style.width = this.divWidth  + 'px';
                 div.style.height = this.divHeight + 'px';
                 //cell.className = 'cell content hexagon hexagon-' + this.grid[y][x].colorString();
-                
+
                 if (this.grid[y][x].owner != 0) {
                     $(cell).addClass('hexagon-just-captured');
-                    
+
+                }
+                if(this.grid[y][x].initialCell){
+                  $(cell).addClass('initial-player-cell');
                 }
                 if (this.grid[y][x].owner == 1) {
                     $(cell).addClass('hexagon-active');
                 }
 
-                
+
                 this.grid[y][x].associatedDiv = cell;
                 this.updateDivDisplay(this.grid[y][x]);
                 this.divsContainer.append(div);
@@ -410,7 +414,7 @@ class gameGrid {
         }
 
         var ctx = this.canvasContext;
-        
+
 
         //Saves canvas dimensions
         this.canvasHeight = this.canvas.height;
@@ -431,7 +435,7 @@ class gameGrid {
 
                 var center = this.getCellCenter(x, y);
 
-                
+
 
                 ctx.beginPath();
                 ctx.moveTo(center[0]-dx, center[1]);
@@ -449,7 +453,7 @@ class gameGrid {
                     ctx.fillText(this.grid[y][x].owner, center[0] - dy / 4, center[1] + dy / 3);
                 }
 
-               
+
             }
         }
 

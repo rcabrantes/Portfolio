@@ -49,10 +49,10 @@ namespace Portfolio
         }
 
 
-        public void GameInit(string connectionID,GameCell[,] grid)
+        public void GameInit(string connectionID,int playerNumber,GameCell[,] grid)
         {
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<ColorWarsHub>();
-            hubContext.Clients.Client(connectionID).gameInit(grid);
+            hubContext.Clients.Client(connectionID).gameInit(playerNumber,grid);
         }
 
         #endregion

@@ -24,9 +24,11 @@ namespace ColorWarsMultiplayerActors.Actors
         public class GameInitCommand:ClientCallCommand
         {
             public GameGrid GameData { get; private set; }
-            public GameInitCommand(string connectionID, GameGrid gameData):base(connectionID)
+            public int PlayerNumber { get; private set; }
+            public GameInitCommand(string connectionID,int playerNumber, GameGrid gameData):base(connectionID)
             {
                 GameData = gameData;
+                PlayerNumber = playerNumber;
             }
         }
         public abstract class StatusMessageBase

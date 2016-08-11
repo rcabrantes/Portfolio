@@ -23,10 +23,12 @@ namespace ColorWarsMultiplayerActors.Actors
         public class WelcomeToGameMessage
         {
             public IActorRef GameActor { get; private set; }
+            public int PlayerNumber { get; private set; }
 
-            public WelcomeToGameMessage(IActorRef gameActor)
+            public WelcomeToGameMessage(IActorRef gameActor,int playerNumber)
             {
                 GameActor = gameActor;
+                PlayerNumber = playerNumber;
             }
         }
     }

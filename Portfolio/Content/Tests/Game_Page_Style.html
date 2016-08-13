@@ -6,9 +6,13 @@
     <script src="../Core/utilities.js"></script>
     <script src="../Core/gameCell.js"></script>
     <script src="../Core/gameGrid.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../ColorWars.css">
     <link rel="stylesheet" type="text/css" href="../HotSeat.css">
-
+    <link rel="stylesheet" type="text/css" href="../game-page-style.css">
+    <link async href="http://fonts.googleapis.com/css?family=Fredoka%20One" rel="stylesheet" type="text/css"/>
+    <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Color Wars</title>
 </head>
 
@@ -17,6 +21,17 @@
 </header>
 
 <body>
+    <div class="row" id="top-container">
+        <div class="col-md-6" id="player">
+          <span>Player 1</span>
+          <p><span>Score: </span><span id="score1"></span></p>
+        </div>
+        <div class="col-md-6" id="player">
+          <span>Player 2</span>
+          <p><span>Score: </span><span id="score2"><span></p>
+        </div>
+    </div>
+
     <div>
         <p>This tests that the cell capture works.</p>
         <p>Pick new colors for the player, cells should be captured (till the board is all captured).</p>
@@ -28,13 +43,7 @@
         <div id="colorControls1"></div>
     </div>
     <br />
-    <div class="score">
-        <h3>Scores</h3>
-        <span>Player 1: </span> <span id="score1"></span>
-        <br />
-        <span>Player 2: </span><span id="score2"></span>
-    </div>
-    <div id="test" height="480" width="800" style="background-color:black"></div>
+    <div id="test" height="480" width="800" style="background-color:white"></div>
     <input type="submit" value="Draw" onclick="drawClick()" />
 
     <div class="controls-container" data-player="2">

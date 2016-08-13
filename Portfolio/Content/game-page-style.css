@@ -7,8 +7,8 @@
 }
 
 body {
-            text-align: center;
-        }
+    text-align: center;
+}
 
 header {
     padding: 100px;
@@ -17,13 +17,48 @@ header {
 }
 
 h1 {
-    font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+    /*font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;*/
+    font: normal 60px/1;
+    font-family: 'Press Start 2P', cursive;
     color: rgba(255,255,255,1);
     text-align: center;
     text-overflow: clip;
-    text-shadow: 3px 3px 0 #0199d9, 4px 4px 0 #0199d9, 5px 5px 0 #0199d9, 6px 6px 0 #0199d9, 7px 7px 0 #0199d9, 8px 8px 0 #0199d9, 9px 9px 0 #0199d9, 10px 10px 0 #0199d9, 11px 11px 0 #0199d9, 12px 12px 0 #0199d9, 13px 13px 0 #0199d9, 14px 14px 0 #0199d9, 15px 15px 0 #0199d9, 16px 16px 0 #0199d9, 17px 17px 0 #0199d9, 18px 18px 0 #0199d9, 19px 19px 0 #0199d9, 20px 20px 0 #0199d9;
+    text-shadow: 3px 3px 0 #0199d9, 4px 4px 0 #0199d9,
+    5px 5px 0 #0199d9, 6px 6px 0 #0199d9, 7px 7px 0 #0199d9,
+    8px 8px 0 #0199d9, 9px 9px 0 #0199d9, 10px 10px 0 #0199d9,
+    11px 11px 0 #0199d9, 12px 12px 0 #0199d9, 13px 13px 0 #0199d9,
+    14px 14px 0 #0199d9, 15px 15px 0 #0199d9, 16px 16px 0 #0199d9,
+    17px 17px 0 #0199d9, 18px 18px 0 #0199d9, 19px 19px 0 #0199d9,
+    20px 20px 0 #0199d9;
 }
 
+#top-container {
+    width: auto;
+    height: auto;
+    background-color: lightgrey;
+    margin-left: 0;
+}
+
+#player {
+    text-align: left;
+    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-left: 15px;
+    background-color: cornflowerblue;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+}
+
+#player > span {
+    font: normal 16px 'Press Start 2P', cursive;
+    margin: 0;
+}
+
+#player > p {
+    font: normal 16px 'Press Start 2P', cursive;
+    margin: 0;
+}
 
 .Button1 {
   float: left;

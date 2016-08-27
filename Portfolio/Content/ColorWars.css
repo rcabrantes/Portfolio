@@ -25,7 +25,7 @@
     height:100%;
 	display: inline-block;
 	overflow: hidden;
-    
+
 	margin: 0;
 	padding: 16%;
 	transform: rotate(30deg) skewY(30deg) scaleX(.866025); /* .866 = sqrt(3)/2 */
@@ -51,9 +51,9 @@
 
 
 
-.content:after {
+.initial-player-cell.content:after {
      content: attr(data-content);
-     color:black; 
+     color:black;
      font-size:60%;
 	 text-align:center;
 }
